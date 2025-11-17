@@ -5,12 +5,13 @@
 ### Frontend (.env.local for development, .env.production for production)
 
 ```
-VITE_API_URL=http://localhost:8000
+VITE_VITE_API_URL=http://localhost:8000
 ```
 
 For production, update this to your backend URL:
+
 ```
-VITE_API_URL=https://your-backend-domain.com
+VITE_VITE_API_URL=https://your-backend-domain.com
 ```
 
 ### Backend (.env)
@@ -23,6 +24,7 @@ PORT=8000
 ## Development
 
 ### Frontend
+
 ```bash
 cd frontend
 npm install
@@ -30,6 +32,7 @@ npm run dev
 ```
 
 ### Backend
+
 ```bash
 cd backend
 npm install
@@ -39,6 +42,7 @@ npm start
 ## Production Build
 
 ### Frontend
+
 1. Update `.env.production` with your production API URL
 2. Run build:
    ```bash
@@ -47,6 +51,7 @@ npm start
 3. Deploy the `dist` folder to your hosting (Vercel, Netlify, etc.)
 
 ### Backend
+
 1. Ensure MongoDB is set up
 2. Set environment variables in your hosting platform
 3. Deploy backend to your server (AWS, Heroku, etc.)
@@ -60,17 +65,18 @@ db.users.insertOne({
   name: "Admin",
   email: "admin@gmail.com",
   password: "bcrypt_hashed_password",
-  role: "admin"
-})
+  role: "admin",
+});
 ```
 
 **Note**: Admin login uses hardcoded credentials (admin@gmail.com / admin123) for quick access without database lookup.
 
 ## API Endpoints
 
-All frontend API calls use the `VITE_API_URL` environment variable. Update this single variable to switch between different backend URLs.
+All frontend API calls use the `VITE_VITE_API_URL` environment variable. Update this single variable to switch between different backend URLs.
 
 ### Key Routes
+
 - `/auth/login` - User and Admin login
 - `/auth/signup` - User registration
 - `/products` - Get all products

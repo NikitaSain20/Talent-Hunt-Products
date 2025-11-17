@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-const { VITE_API_URL } = import.meta.env;
+const { VITE_VITE_API_URL } = import.meta.env;
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -20,7 +20,7 @@ export default function Orders() {
         const decoded = jwtDecode(token);
         const userId = decoded.id;
 
-        const response = await fetch(`${VITE_API_URL}/order/${userId}`);
+        const response = await fetch(`${VITE_VITE_API_URL}/order/${userId}`);
         const data = await response.json();
 
         if (Array.isArray(data)) {
@@ -131,7 +131,7 @@ export default function Orders() {
                       className="flex items-center border-b border-gray-200 pb-4 last:border-b-0 last:pb-0"
                     >
                       <img
-                        src={`${API_URL}/${item.image}`}
+                        src={`${VITE_API_URL}/${item.image}`}
                         alt={item.name}
                         className="w-16 h-16 object-cover rounded-lg mr-4"
                       />

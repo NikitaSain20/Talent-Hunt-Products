@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-const { VITE_API_URL } = import.meta.env;
-// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const { VITE_VITE_API_URL } = import.meta.env;
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("products");
@@ -22,7 +21,7 @@ export default function AdminDashboard() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${VITE_API_URL}/products`);
+      const response = await fetch(`${VITE_VITE_API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -32,7 +31,7 @@ export default function AdminDashboard() {
 
   const fetchAllOrders = async () => {
     try {
-      const response = await fetch(`${API_URL}/order/admin/all`);
+      const response = await fetch(`${VITE_API_URL}/order/admin/all`);
       const data = await response.json();
       setOrders(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -77,7 +76,7 @@ export default function AdminDashboard() {
     form.append("image", formData.image);
 
     try {
-      const response = await fetch(`${API_URL}/products/add`, {
+      const response = await fetch(`${VITE_API_URL}/products/add`, {
         method: "POST",
         body: form,
       });
@@ -222,7 +221,7 @@ export default function AdminDashboard() {
                     >
                       <div className="flex gap-4">
                         <img
-                          src={`${API_URL}/${product.image}`}
+                          src={`${VITE_API_URL}/${product.image}`}
                           alt={product.name}
                           className="w-16 h-16 object-cover rounded shrink-0"
                         />

@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 
 export const CartContext = createContext();
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const { VITE_VITE_API_URL } = import.meta.env;
 
 const decodeToken = (token) => {
   try {
@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
 
   const loadCartFromDatabase = async (id) => {
     try {
-      const response = await fetch(`${API_URL}/cart/${id}`);
+      const response = await fetch(`${VITE_API_URL}/cart/${id}`);
       const data = await response.json();
       if (data.items && data.items.length > 0) {
         const formattedItems = data.items.map((item) => ({
@@ -57,7 +57,9 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = async (product, quantity = 1) => {
     setCartItems((prev) => {
-      const existingItem = prev.find((item) => item.product._id === product._id);
+      const existingItem = prev.find(
+        (item) => item.product._id === product._id
+      );
       if (existingItem) {
         return prev.map((item) =>
           item.product._id === product._id
@@ -70,7 +72,7 @@ export const CartProvider = ({ children }) => {
 
     if (userId) {
       try {
-        const response = await fetch(`${API_URL}/cart/add`, {
+        const response = await fetch(`${VITE_API_URL}/cart/add`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -112,7 +114,7 @@ export const CartProvider = ({ children }) => {
 
     if (userId) {
       try {
-        const response = await fetch(`${API_URL}/cart/update`, {
+        const response = await fetch(`${VITE_API_URL}/cart/update`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -141,11 +143,13 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = async (productId) => {
-    setCartItems((prev) => prev.filter((item) => item.product._id !== productId));
+    setCartItems((prev) =>
+      prev.filter((item) => item.product._id !== productId)
+    );
 
     if (userId) {
       try {
-        const response = await fetch(`${API_URL}/cart/remove`, {
+        const response = await fetch(`${VITE_API_URL}/cart/remove`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -188,7 +192,7 @@ export const CartProvider = ({ children }) => {
 
     if (userId) {
       try {
-        await fetch(`${API_URL}/cart/clear`, {
+        await fetch(`${VITE_API_URL}/cart/clear`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId }),
