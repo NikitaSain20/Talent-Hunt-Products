@@ -95,7 +95,7 @@ export default function Cart() {
                     {item.product.description}
                   </p>
                   <p className="text-cyan-800 font-semibold">
-                    ${item.product.price}
+                    ₹{item.product.price}
                   </p>
                 </div>
 
@@ -157,7 +157,7 @@ export default function Cart() {
 
             <div className="text-right">
               <p className="text-2xl font-bold text-cyan-800">
-                Total: ${totalPrice.toFixed(2)}
+                Total: ₹{totalPrice.toFixed(2)}
               </p>
               <button
                 onClick={handleCheckout}
