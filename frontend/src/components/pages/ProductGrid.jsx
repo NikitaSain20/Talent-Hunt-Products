@@ -12,7 +12,7 @@ export default function ProductsGrid() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${API_URL}/products`);
+        const res = await fetch(`${VITE_API_URL}/products`);
         const data = await res.json();
         setProducts(data);
         setLoading(false);
