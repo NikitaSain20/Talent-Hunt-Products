@@ -5,13 +5,13 @@
 ### Frontend (.env.local for development, .env.production for production)
 
 ```
-VITE_VITE_API_URL=http://localhost:8000
+VITE_API_URL=http://localhost:8000
 ```
 
 For production, update this to your backend URL:
 
 ```
-VITE_VITE_API_URL=https://your-backend-domain.com
+VITE_API_URL=https://your-backend-domain.com
 ```
 
 ### Backend (.env)
@@ -73,7 +73,7 @@ db.users.insertOne({
 
 ## API Endpoints
 
-All frontend API calls use the `VITE_VITE_API_URL` environment variable. Update this single variable to switch between different backend URLs.
+All frontend API calls use the `VITE_API_URL` environment variable. Update this single variable to switch between different backend URLs.
 
 ### Key Routes
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-const { VITE_VITE_API_URL } = import.meta.env;
+const { VITE_API_URL } = import.meta.env;
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -20,7 +20,7 @@ export default function Orders() {
         const decoded = jwtDecode(token);
         const userId = decoded.id;
 
-        const response = await fetch(`${VITE_VITE_API_URL}/order/${userId}`);
+        const response = await fetch(`${VITE_API_URL}/order/${userId}`);
         const data = await response.json();
 
         if (Array.isArray(data)) {

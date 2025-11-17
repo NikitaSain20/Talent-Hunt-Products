@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import ProductCard from "../molecules/ProductCard";
 
-const { VITE_VITE_API_URL } = import.meta.env;
+const { VITE_API_URL } = import.meta.env;
 
 export default function ProductsGrid() {
   const { addToCart } = useContext(CartContext);
@@ -12,7 +12,7 @@ export default function ProductsGrid() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${VITE_VITE_API_URL}/products`);
+        const res = await fetch(`${VITE_API_URL}/products`);
         const data = await res.json();
         setProducts(data);
         setLoading(false);
@@ -47,7 +47,7 @@ export default function ProductsGrid() {
               key={product._id}
               product={{
                 ...product,
-                image: `${VITE_VITE_API_URL}/${product.image}`,
+                image: `${VITE_API_URL}/${product.image}`,
               }}
               addToCart={addToCart}
             />

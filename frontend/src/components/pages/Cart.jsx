@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { jwtDecode } from "jwt-decode";
-const { VITE_VITE_API_URL } = import.meta.env;
+const { VITE_API_URL } = import.meta.env;
 
 export default function Cart() {
   const {
@@ -24,7 +24,7 @@ export default function Cart() {
       const decoded = jwtDecode(token);
       const userId = decoded.id;
 
-      const response = await fetch(`${VITE_VITE_API_URL}/order/place`, {
+      const response = await fetch(`${VITE_API_URL}/order/place`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId }),
@@ -82,7 +82,7 @@ export default function Cart() {
                 className="flex items-center border-b border-gray-200 py-4 last:border-b-0"
               >
                 <img
-                  src={`${VITE_VITE_API_URL}/${item.product.image}`}
+                  src={`${VITE_API_URL}/${item.product.image}`}
                   alt={item.product.name}
                   className="w-20 h-20 object-cover rounded-lg mr-4"
                 />

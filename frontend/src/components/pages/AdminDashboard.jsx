@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const { VITE_VITE_API_URL } = import.meta.env;
+const { VITE_API_URL } = import.meta.env;
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("products");
@@ -21,7 +21,7 @@ export default function AdminDashboard() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${VITE_VITE_API_URL}/products`);
+      const response = await fetch(`${VITE_API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {

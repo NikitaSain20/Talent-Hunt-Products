@@ -2,9 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { jwtDecode } from "jwt-decode";
-const { VITE_VITE_API_URL } = import.meta.env;
-const VITE_API_URL =
-  import.meta.env.VITE_VITE_API_URL || "http://localhost:8000";
+const { VITE_API_URL } = import.meta.env;
 
 export default function Login() {
   const { login } = useContext(AuthContext);
@@ -16,7 +14,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${VITE_VITE_API_URL}/auth/login`, {
+      const res = await fetch(`${VITE_API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

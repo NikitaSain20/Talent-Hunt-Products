@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 
 export const CartContext = createContext();
 
-const { VITE_VITE_API_URL } = import.meta.env;
+const { VITE_API_URL } = import.meta.env;
 
 const decodeToken = (token) => {
   try {
