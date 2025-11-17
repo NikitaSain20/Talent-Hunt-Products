@@ -12,11 +12,11 @@ import orderRouter from "./routes/orderRoutes.js";
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173", // allow frontend requests
-    credentials: true, // allow cookies if needed
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
-// ------------------------------------------------------
 
 IsDbConnected(process.env.MONGODB_URL);
 
