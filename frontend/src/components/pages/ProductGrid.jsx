@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import ProductCard from "../molecules/ProductCard";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const { VITE_API_URL } = import.meta.env;
 
 export default function ProductsGrid() {
   const { addToCart } = useContext(CartContext);
@@ -47,7 +47,7 @@ export default function ProductsGrid() {
               key={product._id}
               product={{
                 ...product,
-                image: `${API_URL}/${product.image}`,
+                image: `${VITE_API_URL}/${product.image}`,
               }}
               addToCart={addToCart}
             />

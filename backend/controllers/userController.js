@@ -6,7 +6,6 @@ const SECRET = "supersecret123";
 const ADMIN_EMAIL = "admin@gmail.com";
 const ADMIN_PASSWORD = "admin123";
 
-// ---------------------- USER SIGNUP ----------------------
 export const userSignup = async (req, res) => {
   try {
     const { name, email, password } = req.body;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const { VITE_API_URL } = import.meta.env;
+// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("products");
@@ -22,7 +22,7 @@ export default function AdminDashboard() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${API_URL}/products`);
+      const response = await fetch(`${VITE_API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {

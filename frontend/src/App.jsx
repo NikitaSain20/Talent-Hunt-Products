@@ -47,19 +47,37 @@ function App() {
           />
           <Route
             path="/admin"
-            element={isLoggedIn && isAdmin ? <AdminDashboard /> : <Navigate to="/login" />}
+            element={
+              isLoggedIn && isAdmin ? (
+                <AdminDashboard />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
           />
           <Route
             path="/cart"
-            element={isLoggedIn && !isAdmin ? <Cart /> : <Navigate to="/login" />}
+            element={
+              isLoggedIn && !isAdmin ? <Cart /> : <Navigate to="/login" />
+            }
           />
           <Route
             path="/orders"
-            element={isLoggedIn && !isAdmin ? <Orders /> : <Navigate to="/login" />}
+            element={
+              isLoggedIn && !isAdmin ? <Orders /> : <Navigate to="/login" />
+            }
           />
           <Route
             path="/login"
-            element={!isLoggedIn ? <Login /> : isAdmin ? <Navigate to="/admin" /> : <Navigate to="/" />}
+            element={
+              !isLoggedIn ? (
+                <Login />
+              ) : isAdmin ? (
+                <Navigate to="/admin" />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           />
           <Route
             path="/signup"

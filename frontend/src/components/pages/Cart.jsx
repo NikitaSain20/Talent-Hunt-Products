@@ -2,8 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { jwtDecode } from "jwt-decode";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const { VITE_API_URL } = import.meta.env;
 
 export default function Cart() {
   const {
@@ -25,7 +24,7 @@ export default function Cart() {
       const decoded = jwtDecode(token);
       const userId = decoded.id;
 
-      const response = await fetch(`${API_URL}/order/place`, {
+      const response = await fetch(`${VITE_API_URL}/order/place`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId }),
