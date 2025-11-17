@@ -12,7 +12,7 @@ import orderRouter from "./routes/orderRoutes.js";
 const app = express();
 app.use(
   cors({
-    origin: "*",
+    origin: "process.env.VITE_FRONTEND_URL",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

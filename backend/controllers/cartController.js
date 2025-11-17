@@ -1,7 +1,6 @@
 import Cart from "../models/cartModel.js";
 import Product from "../models/productModel.js";
 
-// Helper function to calculate total amount
 const calculateTotal = (items) => {
   return items.reduce((total, item) => total + item.price * item.qty, 0);
 };
@@ -32,7 +31,9 @@ export const addToCart = async (req, res) => {
         totalAmount: product.price * quantity,
       });
     } else {
-      const existingItem = cart.items.find(item => item.productId === productId);
+      const existingItem = cart.items.find(
+        (item) => item.productId === productId
+      );
 
       if (existingItem) {
         existingItem.qty += quantity;
@@ -52,7 +53,9 @@ export const addToCart = async (req, res) => {
 
     res.json(cart);
   } catch (error) {
-    res.status(500).json({ message: "Error adding to cart", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error adding to cart", error: error.message });
   }
 };
 
@@ -65,13 +68,13 @@ export const updateCartItem = async (req, res) => {
       return res.status(404).json({ message: "Cart not found" });
     }
 
-    const item = cart.items.find(item => item.productId === productId);
+    const item = cart.items.find((item) => item.productId === productId);
     if (!item) {
       return res.status(404).json({ message: "Item not found in cart" });
     }
 
     if (quantity <= 0) {
-      cart.items = cart.items.filter(item => item.productId !== productId);
+      cart.items = cart.items.filter((item) => item.productId !== productId);
     } else {
       item.qty = quantity;
     }
@@ -81,7 +84,9 @@ export const updateCartItem = async (req, res) => {
 
     res.json(cart);
   } catch (error) {
-    res.status(500).json({ message: "Error updating cart item", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error updating cart item", error: error.message });
   }
 };
 
@@ -94,13 +99,15 @@ export const removeFromCart = async (req, res) => {
       return res.status(404).json({ message: "Cart not found" });
     }
 
-    cart.items = cart.items.filter(item => item.productId !== productId);
+    cart.items = cart.items.filter((item) => item.productId !== productId);
     cart.totalAmount = calculateTotal(cart.items);
     await cart.save();
 
     res.json(cart);
   } catch (error) {
-    res.status(500).json({ message: "Error removing from cart", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error removing from cart", error: error.message });
   }
 };
 
@@ -119,7 +126,9 @@ export const clearCart = async (req, res) => {
 
     res.json(cart);
   } catch (error) {
-    res.status(500).json({ message: "Error clearing cart", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error clearing cart", error: error.message });
   }
 };
 
@@ -131,6 +140,8 @@ export const viewCart = async (req, res) => {
     }
     res.json(cart);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching cart", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching cart", error: error.message });
   }
 };

@@ -21,7 +21,7 @@ export default function Signup() {
       const data = await res.json();
       if (data.success) {
         setMessage("Created successfully. Redirecting...");
-        navigate("/login"); // redirect to login
+        navigate("/login");
       } else {
         setMessage(data.error);
       }

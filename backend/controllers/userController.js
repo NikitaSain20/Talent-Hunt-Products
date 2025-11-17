@@ -10,18 +10,15 @@ export const userSignup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Validate
     if (!name || !email || !password) {
       return res.json({ success: false, error: "All fields are required" });
     }
 
-    // Check if user already exists
     const alreadyUser = await User.findOne({ email });
     if (alreadyUser) {
       return res.json({ success: false, error: "Email already registered" });
     }
 
-    // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPass = await bcrypt.hash(password, salt);
 
@@ -38,7 +35,6 @@ export const userSignup = async (req, res) => {
   }
 };
 
-// ---------------------- UNIFIED LOGIN (USER & ADMIN) ----------------------
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
